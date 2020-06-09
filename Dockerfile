@@ -1,7 +1,5 @@
 FROM golang:alpine as builder
 
-WORKDIR /go/src
-
 COPY sum.go .
 
 # RUN go build -o sum -a -ldflags="-s -w" -installsuffix cgo && \
@@ -11,10 +9,9 @@ RUN GOOS=linux go build -ldflags="-s -w" sum.go
 
 FROM hello-world
 
-WORKDIR /go/src/sum
-
-COPY --from=builder /go/src/sum .
+COPY --from=builder /go/sum .
+COPY sum.go .
 # RUN pwd
 # ENTRYPOINT ["/sum"]
 
-ENTRYPOINT ["/go/src/sum/sum"]
+ENTRYPOINT ["/sum"]
