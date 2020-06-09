@@ -6,7 +6,7 @@ steps:
   - id: "Compilando Golang"
     name: "gcr.io/cloud-builders/go"
     args: ["run", "sum"]
-    #env: ["GOPATH=."]
+    env: ["GOPATH=/go"]
 
 images:
   - 'gcr.io/$PROJECT_ID/desafio_ci:latest'
