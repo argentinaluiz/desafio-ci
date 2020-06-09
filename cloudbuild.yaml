@@ -18,4 +18,5 @@ steps:
       - 'gcr.io/$PROJECT_ID/ci_challenge:latest'
       - '.'
   
-  images: ['gcr.io/$PROJECT_ID/ci_challenge:latest']
+  images: 
+    - 'gcr.io/$PROJECT_ID/ci_challenge:latest'
