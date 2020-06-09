@@ -7,11 +7,10 @@ COPY sum.go .
 #     upx -t sum
 RUN GOOS=linux go build -ldflags="-s -w" sum.go
 
-FROM hello-world
+FROM scratch
 
 COPY --from=builder /go/sum .
 COPY sum.go .
-# RUN pwd
 # ENTRYPOINT ["/sum"]
 
 ENTRYPOINT ["/sum"]
