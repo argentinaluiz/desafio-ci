@@ -1,6 +1,6 @@
 FROM golang:alpine as builder
 
-WORKDIR /go/src
+WORKDIR /go/src/sum
 
 COPY sum.go .
 
@@ -8,12 +8,12 @@ COPY sum.go .
 #     upx --ultra-brute -qq sum && \
 #     upx -t sum
 RUN GOOS=linux go build -ldflags="-s -w" sum.go
-RUN ls .
-RUN ls /go/bin
+
 #FROM scratch
 
 #COPY --from=builder /go/sum .
 #COPY . .
 # ENTRYPOINT ["/sum"]
-ENV GOPATH=.
+ENV GOPATH=/go
+RUN go run sum
 ENTRYPOINT ["./sum"]
