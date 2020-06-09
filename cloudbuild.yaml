@@ -8,3 +8,5 @@ steps:
     args: ["run", "sum"]
     env: ["GOPATH=."]
 
+images:
+  - 'gcr.io/$PROJECT_ID/desafio_ci:latest'
