@@ -10,3 +10,5 @@ steps:
 
 images:
   - 'gcr.io/$PROJECT_ID/desafio_ci:latest'
+
+tags: ['cloud-builders-community']
