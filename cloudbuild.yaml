@@ -7,7 +7,7 @@ steps:
   
   - id: 'Executando Teste Unitário111111'
     name: 'gcr.io/cloud-builders/go'
-    args: ['run', './...']
+    args: ['run', 'ci_challenge']
     env: ['GOPATH=.']
 
   - id: 'Executando Teste Unitário'
