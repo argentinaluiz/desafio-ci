@@ -7,3 +7,5 @@ steps:
     name: "gcr.io/cloud-builders/go"
     env: ["GOPATH=."]
     args: ["run", "sum"]
+
+    
