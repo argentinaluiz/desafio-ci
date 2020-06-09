@@ -5,6 +5,11 @@ steps:
     args: ['install', 'ci_challenge']
     env: ['GOPATH=.']
   
+  - id: 'Executando Teste Unitário111111'
+    name: 'gcr.io/cloud-builders/go'
+    args: ['run', './...']
+    env: ['GOPATH=.']
+
   - id: 'Executando Teste Unitário'
     name: 'gcr.io/cloud-builders/go'
     args: ['test', '-v','./...']
