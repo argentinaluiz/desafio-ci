@@ -10,7 +10,7 @@ steps:
 
   - id: "Compilando Golang"
     name: "gcr.io/cloud-builders/go"
-    args: ["run", "/go/src/sum/sum"]
+    args: ["run", "sum"]
     env: ["GOPATH=."]
 
 images:

@@ -11,6 +11,6 @@ RUN GOOS=linux go build -ldflags="-s -w" sum.go
 
 FROM scratch
 
-COPY --from=builder /go/src/sum .
-COPY . .
+COPY --from=builder /go/src/sum /sum
+
 ENTRYPOINT ["/sum"]
