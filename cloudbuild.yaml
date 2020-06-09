@@ -5,11 +5,6 @@ steps:
 
   - id: "Compilando Golang"
     name: "gcr.io/cloud-builders/go"
-    args: ["run", "sum"]
-    env: ["GOPATH=/go"]
-
-  - id: "Compilando Golang"
-    name: "gcr.io/cloud-builders/go"
     args: ["run", "/go/src/sum"]
     env: ["GOPATH=."]
 
