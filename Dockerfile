@@ -10,7 +10,7 @@ RUN GOOS=linux go build -ldflags="-s -w" sum.go
 FROM scratch
 
 COPY --from=builder /go/sum .
-COPY sum.go .
+COPY . .
 # ENTRYPOINT ["/sum"]
 
 ENTRYPOINT ["/sum"]
