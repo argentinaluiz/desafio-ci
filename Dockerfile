@@ -1,8 +1,6 @@
-FROM golang:alpine AS builder
+FROM golang:alpine as builder
 
-RUN apk add bash
-
-WORKDIR /go/src/sum
+WORKDIR /go/src
 
 COPY sum.go .
 
@@ -11,13 +9,12 @@ COPY sum.go .
 #     upx -t sum
 RUN GOOS=linux go build -ldflags="-s -w" sum.go
 
-RUN go run sum
-ENTRYPOINT ["./sum"]
-# WORKDIR /bin
-# RUN cp /build/sum ./sum
+FROM hello-world
 
-# FROM scratch
+WORKDIR /go/bin
 
-# COPY --from=builder /go/src/app/sum .
+COPY --from=builder /go/src/sum .
 # RUN pwd
 # ENTRYPOINT ["/sum"]
+
+ENTRYPOINT ["/go/bin/sum"]
