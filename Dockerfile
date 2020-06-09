@@ -1,16 +1,20 @@
-FROM golang:alpine as builder
+FROM golang:alpine3.10
 
-WORKDIR /go/src
+WORKDIR /go/src/ci_challenge
+COPY ./src/ci_challenge .
 
-COPY sum.go .
+RUN go install -v ./...
 
-# RUN go build -o sum -a -ldflags="-s -w" -installsuffix cgo && \
-#     upx --ultra-brute -qq sum && \
-#     upx -t sum
-RUN GOOS=linux go build -ldflags="-s -w" sum.go
+CMD ["ci_challenge"]
+
+FROM golang:alpine3.10
+
+WORKDIR $GOPATH/src/ci_challenge/sum/
+COPY ./src/ci_challenge .
+
+RUN go get -d -v
+RUN go build -o /go/bin/ci_challenge -ldflags "-s -w"
 
 FROM scratch
-
-COPY --from=builder /go/src/sum /sum
-
-ENTRYPOINT ["/sum"]
+COPY --from=0 /go/bin/ci_challenge /ci_challenge
+ENTRYPOINT ["/ci_challenge"]
