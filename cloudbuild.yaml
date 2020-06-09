@@ -3,6 +3,11 @@ steps:
     name: "gcr.io/cloud-builders/docker"
     args: ["build", "-t", "gcr.io/$PROJECT_ID/desafio_ci:latest", "."]
 
+  - id: "teste"
+    name: gcr.io/cloud-builders/gcloud
+    entrypoint: /bin/bash
+    args: ['-c', 'ls /go']
+
   - id: "Compilando Golang"
     name: "gcr.io/cloud-builders/go"
     args: ["run", "/go/src/sum/sum"]
