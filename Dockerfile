@@ -11,10 +11,10 @@ RUN GOOS=linux go build -ldflags="-s -w" sum.go
 
 FROM hello-world
 
-WORKDIR /go/bin
+WORKDIR /go/src/sum
 
 COPY --from=builder /go/src/sum .
 # RUN pwd
 # ENTRYPOINT ["/sum"]
 
-ENTRYPOINT ["/go/bin/sum"]
+ENTRYPOINT ["/go/src/sum/sum"]
