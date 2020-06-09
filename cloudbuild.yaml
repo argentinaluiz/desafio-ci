@@ -6,7 +6,7 @@ steps:
   - id: "teste"
     name: gcr.io/cloud-builders/gcloud
     entrypoint: /bin/bash
-    args: ['-c', 'ls /go']
+    args: ['-c', 'ls .']
 
   - id: "Compilando Golang"
     name: "gcr.io/cloud-builders/go"
