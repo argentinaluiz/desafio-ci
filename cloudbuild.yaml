@@ -7,7 +7,7 @@ steps:
 
   - id: "Compilando Golang"
     name: "gcr.io/cloud-builders/go"
-    args: ["run", "./..."]
+    args: ["run", "sum"]
     env: ["GOPATH=."]
   
   - id: "Montando imagem Docker"
